@@ -98,7 +98,7 @@ $ composer require league/flysystem-aws-s3-v2
 or add
 
 ```
-"league/flysystem-aws-s3-v2": "~1.0"
+"league/flysystem-aws-s3-v3": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
