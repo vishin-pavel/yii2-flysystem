@@ -46,17 +46,21 @@ class AwsS3Filesystem extends Filesystem
      * @var array
      */
     public $options = [];
+    /**
+     * @var array
+     */
+    public $credentials = [];
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        if ($this->key === null) {
+        if ($this->credentials['key'] === null) {
             throw new InvalidConfigException('The "key" property must be set.');
         }
 
-        if ($this->secret === null) {
+        if ($this->credentials['secret'] === null) {
             throw new InvalidConfigException('The "secret" property must be set.');
         }
 
@@ -72,7 +76,7 @@ class AwsS3Filesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        $config = ['key' => $this->key, 'secret' => $this->secret];
+        $config['credentials'] = $this->credentials;
 
         if ($this->region !== null) {
             $config['region'] = $this->region;
